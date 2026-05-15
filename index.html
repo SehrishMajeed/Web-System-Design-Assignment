@@ -1,229 +1,177 @@
-﻿<!-- ======================================================
- CS305 - Web Systems and Technology
- Student: Sehrish Majeed (24014119-141)
- Section: A | Semester: 4
- Instructor: Mr. Yasir Iqbal
- ====================================================== -->
+<!-- ======================================================
+   Smart Study Planner - Bonus Project
+   CS305 Web Systems and Technology
+   Student: Sehrish Majeed (24014119-141)
+====================================================== -->
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CS305 JavaScript Assignment</title>
+    <title>Smart Study Planner – CS305 Bonus</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <div id="loading" class="loading-screen">
-        <div class="loading-content">
-            <div class="loading-spinner"></div>
-            <p>Loading CS305 Assignment Dashboard...</p>
-        </div>
+    <!-- Floating background effects -->
+    <div class="background-blur"></div>
+    <div class="floating-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
     </div>
 
-    <!-- Header Section -->
-    <header class="header">
-        <div class="header-glow"></div>
-        <div class="container header-inner">
-            <div class="header-copy">
-                <p class="eyebrow">CS305 Assignment</p>
-                <h1>JavaScript Assignment Dashboard</h1>
-                <p class="subtitle">
-                    A professional academic interface for reviewing each assignment module, opening source files, and tracking code coverage clearly.
-                </p>
-            </div>
-            <div class="header-actions-row">
-                <nav class="header-nav">
-                    <a href="#overview">Overview</a>
-                    <a href="#modules">Modules</a>
-                    <a href="#panel">Status</a>
-                    <a href="../06_Bonus_Projects/Index.html" target="_blank">Bonus Project</a>
-                </nav>
-                <div class="header-search">
-                    <label for="moduleSearch">Search modules</label>
-                    <input id="moduleSearch" type="search" placeholder="Search assignment parts" oninput="filterModules()">
-                </div>
-            </div>
-        </div>
-    </header>
+    <div class="planner-shell">
 
-    <!-- Main Content -->
-    <main class="container">
-
-        <!-- Intro Section -->
-        <section class="card hero-card" id="overview">
+        <!-- Header -->
+        <header class="planner-header">
             <div>
-                <h2>Project Overview</h2>
-                <p>
-                    This dashboard presents the CS305 assignment in a clean academic format. It includes direct links to each module, clear module descriptions, and a status panel that explains what is selected.
+                <span class="eyebrow">CS305 · Bonus Project</span>
+                <h1>Smart Study Planner</h1>
+                <p class="subtitle">
+                    Plan organised study sessions, manage deadlines, and track progress with an intelligent task system.
                 </p>
             </div>
-            <div class="hero-pill">
-                <span>JavaScript</span>
-                <span>Academic</span>
-                <span>Modular</span>
-                <span>Professional</span>
+            <div class="header-actions">
+                <button class="secondary-btn" onclick="clearCompleted()" title="Clear all completed tasks">
+                    <span class="btn-icon">✓</span> Clear Completed
+                </button>
+                <button class="secondary-btn" onclick="resetPlanner()" title="Reset all tasks">
+                    <span class="btn-icon">↻</span> Reset Planner
+                </button>
             </div>
-            <div class="progress-section">
-                <h3>Assignment Progress</h3>
-                <div class="progress-bar">
-                    <div class="progress-fill" id="assignmentProgress"></div>
+        </header>
+
+        <!-- Top grid: form + summary -->
+        <section class="planner-grid">
+
+            <!-- Add Task Panel -->
+            <div class="task-panel glass-card">
+                <div class="panel-title-row">
+                    <div>
+                        <h2>Add New Study Task</h2>
+                        <p>Fill in the details below to create a focused study task.</p>
+                    </div>
                 </div>
-                <p id="progressText">0% Complete</p>
+
+                <div class="task-form">
+
+                    <div class="field-group">
+                        <label for="subject">Subject <span class="required">*</span></label>
+                        <input type="text" id="subject" placeholder="e.g. Web Systems Technology" required>
+                    </div>
+
+                    <div class="field-group">
+                        <label for="topic">Topic <span class="required">*</span></label>
+                        <input type="text" id="topic" placeholder="e.g. Async JavaScript" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="field-group half-width">
+                            <label for="dueDate">Due Date</label>
+                            <input type="date" id="dueDate">
+                        </div>
+                        <div class="field-group half-width">
+                            <label for="priority">Priority</label>
+                            <select id="priority">
+                                <option value="High">🔴 High</option>
+                                <option value="Medium" selected>🟡 Medium</option>
+                                <option value="Low">🟢 Low</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="field-group half-width">
+                            <label for="category">Category</label>
+                            <select id="category">
+                                <option value="Assignment">📝 Assignment</option>
+                                <option value="Revision">📚 Revision</option>
+                                <option value="Exam Prep">🎯 Exam Prep</option>
+                                <option value="Project">💻 Project</option>
+                            </select>
+                        </div>
+                        <div class="field-group half-width">
+                            <label for="search">Search Tasks</label>
+                            <input type="text" id="search" placeholder="Search subject or topic" oninput="handleSearch()">
+                        </div>
+                    </div>
+
+                    <button class="primary-btn" onclick="addTask()">
+                        <span class="btn-icon">+</span> Add Task
+                    </button>
+
+                </div>
             </div>
+
+            <!-- Summary Panel -->
+            <div class="summary-panel glass-card">
+                <div class="panel-title-row">
+                    <div>
+                        <h2>Task Overview</h2>
+                        <p>Track completion, priorities, and deadlines at a glance.</p>
+                    </div>
+                </div>
+
+                <div class="summary-grid">
+                    <div class="summary-card">
+                        <span>✓ Completed</span>
+                        <strong id="completedTasks">0</strong>
+                    </div>
+                    <div class="summary-card">
+                        <span>⚠️ Due Soon</span>
+                        <strong id="dueSoonCount">0</strong>
+                    </div>
+                    <div class="summary-card">
+                        <span>🎯 Next Priority</span>
+                        <strong id="nextPriority" style="font-size: 0.88rem; line-height: 1.3;">—</strong>
+                    </div>
+                </div>
+
+                <div class="progress-card">
+                    <div class="progress-header">
+                        <span>Overall Completion</span>
+                        <strong id="progressText">0%</strong>
+                    </div>
+                    <div class="progress-bar">
+                        <div id="progressFill"></div>
+                    </div>
+                </div>
+
+                <div class="filter-row">
+                    <button class="filter-btn active" onclick="applyFilter('all')">All Tasks</button>
+                    <button class="filter-btn" onclick="applyFilter('pending')">Pending</button>
+                    <button class="filter-btn" onclick="applyFilter('completed')">Completed</button>
+                </div>
+
+                <div class="sort-row">
+                    <label for="sortBy">Sort by:</label>
+                    <select id="sortBy" onchange="applySort(this.value)">
+                        <option value="newest">Newest First</option>
+                        <option value="oldest">Oldest First</option>
+                        <option value="priority">By Priority</option>
+                        <option value="dueDate">By Due Date</option>
+                    </select>
+                </div>
+            </div>
+
         </section>
 
-        <!-- Modules Section -->
-        <section class="card" id="modules">
-            <div class="section-title-row">
-                <h2>Assignment Modules</h2>
-                <p class="section-hint">Select a module to update the details panel and open the relevant source file.</p>
-            </div>
-
-            <div class="grid">
-
-                <article class="module" id="module-variables">
-                    <div class="module-icon">🔢</div>
-                    <h3>Part 1: Variables</h3>
-                    <p>Review variable declaration, data types, and scope examples aligned with the assignment requirements.</p>
-                    <div class="module-actions">
-                        <button onclick="runVariables(this)">Select</button>
-                        <a href="../01_Part1_Variables/variables.js" target="_blank">View Source</a>
-                    </div>
-                </article>
-
-                <article class="module" id="module-loops">
-                    <div class="module-icon">🔁</div>
-                    <h3>Part 2: Loops & Functions</h3>
-                    <p>Review iteration patterns, loop controls, and function examples as required by the course assignment.</p>
-                    <div class="module-actions">
-                        <button onclick="runLoops(this)">Select</button>
-                        <a href="../02_Part2_Loops_Functions/loops.js" target="_blank">View Source</a>
-                    </div>
-                </article>
-
-                <article class="module" id="module-objects">
-                    <div class="module-icon">🧩</div>
-                    <h3>Part 3: Objects</h3>
-                    <p>Inspect object creation, methods, and JSON handling to match the assignment objectives.</p>
-                    <div class="module-actions">
-                        <button onclick="runObjects(this)">Select</button>
-                        <a href="../03_Part3_Objects/objects.js" target="_blank">View Source</a>
-                    </div>
-                </article>
-
-                <article class="module" id="module-arrays">
-                    <div class="module-icon">📚</div>
-                    <h3>Part 4: Arrays</h3>
-                    <p>Review array operations, transformations, and methods used in the assignment tasks.</p>
-                    <div class="module-actions">
-                        <button onclick="runArrays(this)">Select</button>
-                        <a href="../04_Part4_Arrays/arrays.js" target="_blank">View Source</a>
-                    </div>
-                </article>
-
-                <article class="module" id="module-async">
-                    <div class="module-icon">⚡</div>
-                    <h3>Part 5: Asynchronous JavaScript</h3>
-                    <p>Review callbacks, promises, and async/await examples from the assignment.</p>
-                    <div class="module-actions">
-                        <button onclick="runAsync(this)">Select</button>
-                        <a href="../05_Part5_Async/async.js" target="_blank">View Source</a>
-                    </div>
-                </article>
-
-                <article class="module" id="module-bonus">
-                    <div class="module-icon">⭐</div>
-                    <h3>Bonus Project</h3>
-                    <p>Open the Smart Study Planner bonus mini-app, which demonstrates applied JavaScript logic and user interaction.</p>
-                    <div class="module-actions">
-                        <button onclick="runBonus(this)">Select</button>
-                        <a href="../06_Bonus_Projects/Index.html" target="_blank">View Source</a>
-                    </div>
-                </article>
-
-            </div>
-        </section>
-
-        <section class="card source-card">
-            <div class="section-title-row">
-                <h2>Source Access</h2>
-                <p class="section-hint">Open each JavaScript part directly and verify the assignment structure.</p>
-            </div>
-            <div class="source-grid">
-                <article class="source-item">
-                    <span class="source-no">1</span>
-                    <div>
-                        <h3>Part 1: Variables</h3>
-                        <p>Variable declarations, data types, and scope examples.</p>
-                    </div>
-                    <a href="../01_Part1_Variables/variables.js" target="_blank">Open</a>
-                </article>
-                <article class="source-item">
-                    <span class="source-no">2</span>
-                    <div>
-                        <h3>Part 2: Loops & Functions</h3>
-                        <p>Control flow, loops, and reusable functions.</p>
-                    </div>
-                    <a href="../02_Part2_Loops_Functions/loops.js" target="_blank">Open</a>
-                </article>
-                <article class="source-item">
-                    <span class="source-no">3</span>
-                    <div>
-                        <h3>Part 3: Objects</h3>
-                        <p>Object creation, methods, and JSON data handling.</p>
-                    </div>
-                    <a href="../03_Part3_Objects/objects.js" target="_blank">Open</a>
-                </article>
-                <article class="source-item">
-                    <span class="source-no">4</span>
-                    <div>
-                        <h3>Part 4: Arrays</h3>
-                        <p>Array methods, transformation, and search logic.</p>
-                    </div>
-                    <a href="../04_Part4_Arrays/arrays.js" target="_blank">Open</a>
-                </article>
-                <article class="source-item">
-                    <span class="source-no">5</span>
-                    <div>
-                        <h3>Part 5: Asynchronous JavaScript</h3>
-                        <p>Callbacks, promises, and async/await examples.</p>
-                    </div>
-                    <a href="../05_Part5_Async/async.js" target="_blank">Open</a>
-                </article>
-            </div>
-        </section>
-
-        <!-- Module Panel -->
-        <section class="card panel-card" id="panel">
-            <div class="panel-header">
+        <!-- Full-width task list -->
+        <section class="task-list-panel glass-card">
+            <div class="panel-title-row">
                 <div>
-                    <p class="eyebrow">Selected Module</p>
-                    <h2 id="panel-title">No module selected</h2>
-                    <p id="panel-description">Choose a module above to view details and source file information.</p>
+                    <h2>Task List</h2>
+                    <p id="taskCountInfo">No tasks yet. Create one to get started!</p>
                 </div>
-                <div class="panel-badge">Academic Review</div>
             </div>
-
-            <div class="panel-status" id="panel-status">
-                Ready to review a module.
-            </div>
-
-            <div class="panel-actions">
-                <button onclick="runCurrent()">Review Selected Module</button>
-                <a id="panel-code-link" href="#" target="_blank" class="secondary-link">View Source File</a>
-            </div>
+            <div id="taskList" class="task-list"></div>
         </section>
 
-    </main>
+    </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <p>CS305 JavaScript Assignment • Semester 4</p>
-    </footer>
-
-    <script src="Dashboard.js" defer></script>
+    <script src="bonus.js" defer></script>
 </body>
 </html>
