@@ -1,0 +1,229 @@
+﻿<!-- ======================================================
+ CS305 - Web Systems and Technology
+ Student: Sehrish Majeed (24014119-141)
+ Section: A | Semester: 4
+ Instructor: Mr. Yasir Iqbal
+ ====================================================== -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CS305 JavaScript Assignment</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="loading" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <p>Loading CS305 Assignment Dashboard...</p>
+        </div>
+    </div>
+
+    <!-- Header Section -->
+    <header class="header">
+        <div class="header-glow"></div>
+        <div class="container header-inner">
+            <div class="header-copy">
+                <p class="eyebrow">CS305 Assignment</p>
+                <h1>JavaScript Assignment Dashboard</h1>
+                <p class="subtitle">
+                    A professional academic interface for reviewing each assignment module, opening source files, and tracking code coverage clearly.
+                </p>
+            </div>
+            <div class="header-actions-row">
+                <nav class="header-nav">
+                    <a href="#overview">Overview</a>
+                    <a href="#modules">Modules</a>
+                    <a href="#panel">Status</a>
+                    <a href="../06_Bonus_Projects/Index.html" target="_blank">Bonus Project</a>
+                </nav>
+                <div class="header-search">
+                    <label for="moduleSearch">Search modules</label>
+                    <input id="moduleSearch" type="search" placeholder="Search assignment parts" oninput="filterModules()">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+
+        <!-- Intro Section -->
+        <section class="card hero-card" id="overview">
+            <div>
+                <h2>Project Overview</h2>
+                <p>
+                    This dashboard presents the CS305 assignment in a clean academic format. It includes direct links to each module, clear module descriptions, and a status panel that explains what is selected.
+                </p>
+            </div>
+            <div class="hero-pill">
+                <span>JavaScript</span>
+                <span>Academic</span>
+                <span>Modular</span>
+                <span>Professional</span>
+            </div>
+            <div class="progress-section">
+                <h3>Assignment Progress</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="assignmentProgress"></div>
+                </div>
+                <p id="progressText">0% Complete</p>
+            </div>
+        </section>
+
+        <!-- Modules Section -->
+        <section class="card" id="modules">
+            <div class="section-title-row">
+                <h2>Assignment Modules</h2>
+                <p class="section-hint">Select a module to update the details panel and open the relevant source file.</p>
+            </div>
+
+            <div class="grid">
+
+                <article class="module" id="module-variables">
+                    <div class="module-icon">🔢</div>
+                    <h3>Part 1: Variables</h3>
+                    <p>Review variable declaration, data types, and scope examples aligned with the assignment requirements.</p>
+                    <div class="module-actions">
+                        <button onclick="runVariables(this)">Select</button>
+                        <a href="../01_Part1_Variables/variables.js" target="_blank">View Source</a>
+                    </div>
+                </article>
+
+                <article class="module" id="module-loops">
+                    <div class="module-icon">🔁</div>
+                    <h3>Part 2: Loops & Functions</h3>
+                    <p>Review iteration patterns, loop controls, and function examples as required by the course assignment.</p>
+                    <div class="module-actions">
+                        <button onclick="runLoops(this)">Select</button>
+                        <a href="../02_Part2_Loops_Functions/loops.js" target="_blank">View Source</a>
+                    </div>
+                </article>
+
+                <article class="module" id="module-objects">
+                    <div class="module-icon">🧩</div>
+                    <h3>Part 3: Objects</h3>
+                    <p>Inspect object creation, methods, and JSON handling to match the assignment objectives.</p>
+                    <div class="module-actions">
+                        <button onclick="runObjects(this)">Select</button>
+                        <a href="../03_Part3_Objects/objects.js" target="_blank">View Source</a>
+                    </div>
+                </article>
+
+                <article class="module" id="module-arrays">
+                    <div class="module-icon">📚</div>
+                    <h3>Part 4: Arrays</h3>
+                    <p>Review array operations, transformations, and methods used in the assignment tasks.</p>
+                    <div class="module-actions">
+                        <button onclick="runArrays(this)">Select</button>
+                        <a href="../04_Part4_Arrays/arrays.js" target="_blank">View Source</a>
+                    </div>
+                </article>
+
+                <article class="module" id="module-async">
+                    <div class="module-icon">⚡</div>
+                    <h3>Part 5: Asynchronous JavaScript</h3>
+                    <p>Review callbacks, promises, and async/await examples from the assignment.</p>
+                    <div class="module-actions">
+                        <button onclick="runAsync(this)">Select</button>
+                        <a href="../05_Part5_Async/async.js" target="_blank">View Source</a>
+                    </div>
+                </article>
+
+                <article class="module" id="module-bonus">
+                    <div class="module-icon">⭐</div>
+                    <h3>Bonus Project</h3>
+                    <p>Open the Smart Study Planner bonus mini-app, which demonstrates applied JavaScript logic and user interaction.</p>
+                    <div class="module-actions">
+                        <button onclick="runBonus(this)">Select</button>
+                        <a href="../06_Bonus_Projects/Index.html" target="_blank">View Source</a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <section class="card source-card">
+            <div class="section-title-row">
+                <h2>Source Access</h2>
+                <p class="section-hint">Open each JavaScript part directly and verify the assignment structure.</p>
+            </div>
+            <div class="source-grid">
+                <article class="source-item">
+                    <span class="source-no">1</span>
+                    <div>
+                        <h3>Part 1: Variables</h3>
+                        <p>Variable declarations, data types, and scope examples.</p>
+                    </div>
+                    <a href="../01_Part1_Variables/variables.js" target="_blank">Open</a>
+                </article>
+                <article class="source-item">
+                    <span class="source-no">2</span>
+                    <div>
+                        <h3>Part 2: Loops & Functions</h3>
+                        <p>Control flow, loops, and reusable functions.</p>
+                    </div>
+                    <a href="../02_Part2_Loops_Functions/loops.js" target="_blank">Open</a>
+                </article>
+                <article class="source-item">
+                    <span class="source-no">3</span>
+                    <div>
+                        <h3>Part 3: Objects</h3>
+                        <p>Object creation, methods, and JSON data handling.</p>
+                    </div>
+                    <a href="../03_Part3_Objects/objects.js" target="_blank">Open</a>
+                </article>
+                <article class="source-item">
+                    <span class="source-no">4</span>
+                    <div>
+                        <h3>Part 4: Arrays</h3>
+                        <p>Array methods, transformation, and search logic.</p>
+                    </div>
+                    <a href="../04_Part4_Arrays/arrays.js" target="_blank">Open</a>
+                </article>
+                <article class="source-item">
+                    <span class="source-no">5</span>
+                    <div>
+                        <h3>Part 5: Asynchronous JavaScript</h3>
+                        <p>Callbacks, promises, and async/await examples.</p>
+                    </div>
+                    <a href="../05_Part5_Async/async.js" target="_blank">Open</a>
+                </article>
+            </div>
+        </section>
+
+        <!-- Module Panel -->
+        <section class="card panel-card" id="panel">
+            <div class="panel-header">
+                <div>
+                    <p class="eyebrow">Selected Module</p>
+                    <h2 id="panel-title">No module selected</h2>
+                    <p id="panel-description">Choose a module above to view details and source file information.</p>
+                </div>
+                <div class="panel-badge">Academic Review</div>
+            </div>
+
+            <div class="panel-status" id="panel-status">
+                Ready to review a module.
+            </div>
+
+            <div class="panel-actions">
+                <button onclick="runCurrent()">Review Selected Module</button>
+                <a id="panel-code-link" href="#" target="_blank" class="secondary-link">View Source File</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>CS305 JavaScript Assignment • Semester 4</p>
+    </footer>
+
+    <script src="Dashboard.js" defer></script>
+</body>
+</html>
