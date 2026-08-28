@@ -100,4 +100,12 @@ This project requires **no build tools or external dependencies**.
 
 ---
 
+## 🎓 Project Origins & Academic Context
+
+This repository was originally developed as a comprehensive semester project for a university course in **Web Systems and Technology**. The primary objective was to demonstrate a deep, practical understanding of JavaScript fundamentals, modular code design, and modern web development practices without relying on external libraries or frameworks. 
+
+While it originated as an academic assignment, it has been structured and refined to serve as a professional portfolio piece and a valuable learning resource for others exploring vanilla JavaScript.
+
+---
+
 *This project is open-source and intended for learning and demonstrating modern JavaScript web development.*
