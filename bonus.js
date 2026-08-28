@@ -1,8 +1,6 @@
 ﻿//  ======================================================
 //    Smart Study Planner - Bonus Project
-//    CS305 Web Systems and Technology
-//    Student: Sehrish Majeed (24014119-141)
-// ======================================================
+//    //    // ======================================================
 
 
 
@@ -422,7 +420,7 @@ document.addEventListener("DOMContentLoaded", () => {
             },
             {
                 id: 1004,
-                subject: "CS305 Exam Preparation",
+                subject: "Final Exam Preparation",
                 topic: "Review all JavaScript concepts",
                 dueDate: "2026-05-30",
                 priority: "High",

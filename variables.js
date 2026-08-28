@@ -1,9 +1,7 @@
 // ======================================================
-// CS305 - Web Systems and Technology
-// Part 1: Variables, Data Types & Basic Operations
+// // Part 1: Variables, Data Types & Basic Operations
 // File: variables.js
-// Student: Sehrish Majeed (24014119-141)
-// Section: A | Semester: 4
+// // Section: A | Semester: 4
 // Instructor: Mr. Yasir Iqbal
 // Description:
 //   This file covers JavaScript variable declarations
@@ -20,7 +18,7 @@
 console.log("\n========== SECTION 1: Variable Declarations ==========\n");
 
 // var is function-scoped and can be redeclared
-var studentName = "Sehrish Majeed";
+var studentName = "John Doe ";
 console.log("Using VAR  - Student Name:", studentName);
 
 // let is block-scoped and cannot be redeclared in the same scope
@@ -76,7 +74,7 @@ let isStudentPassed = true;                        // BOOLEAN
 let undefinedVar;                                  // UNDEFINED
 let nullVar        = null;                         // NULL
 
-let studentInfo = { id: 24014119, name: "Sehrish Majeed", section: "A" }; // OBJECT
+let studentInfo = { id: 12345678, name: "John Doe ", section: "A" }; // OBJECT
 let subjects    = ["JavaScript", "HTML", "CSS", "Database"];               // ARRAY
 
 console.log("String  :", courseTitle,      "| Type:", typeof courseTitle);
@@ -171,10 +169,10 @@ console.log("Favorite Fruit 5:", favoriteFruits[4]);
 
 // Task: Object with name, age, city
 let personInfo = {
-    name: "Sehrish Majeed",
+    name: "John Doe ",
     age: 20,
     city: "Lahore",
-    rollNumber: "24014119-141"
+    rollNumber: "12345678-999"
 };
 
 console.log("\nObject Properties:");
@@ -198,7 +196,7 @@ currentYear = 2027;
 console.log("After Reassignment:", currentYear);
 
 // const cannot be reassigned
-const courseCode = "CS305";
+const courseCode = "JavaScript 101";
 console.log("Const Course Code:", courseCode);
 // courseCode = "CS405"; // TypeError - would crash the program
 
@@ -234,8 +232,8 @@ if (isHoliday) {
 
 console.log("\n========== SECTION 8: Type Checking with typeof ==========\n");
 
-let fullName   = "Sehrish Majeed";
-let studentId  = 24014119;
+let fullName   = "John Doe ";
+let studentId  = 12345678;
 let gpa        = 2.8;
 let isEnrolled = true;
 let skills     = ["JavaScript", "HTML", "CSS"];

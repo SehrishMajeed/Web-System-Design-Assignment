@@ -1,9 +1,7 @@
 // ======================================================
-// CS305 - Web Systems and Technology
-// Part 5: Asynchronous JavaScript
+// // Part 5: Asynchronous JavaScript
 // File: async.js
-// Student: Sehrish Majeed (24014119-141)
-// Section: A | Semester: 4
+// // Section: A | Semester: 4
 // Instructor: Mr. Yasir Iqbal
 // Description:
 //   This file covers asynchronous JavaScript: callbacks,
@@ -32,7 +30,7 @@ function displayMessage(msg) {
     console.log("Message received:", msg);
 }
 
-sendMessage("Hello CS305!", displayMessage);
+sendMessage("Hello World!", displayMessage);
 
 
 

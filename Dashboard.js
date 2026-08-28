@@ -1,7 +1,5 @@
 ﻿/* ====================================================== 
-CS305 - Web Systems and Technology
-Student: Sehrish Majeed (24014119-141)
- Dashboard Controller
+Dashboard Controller
 Connects each module to the dashboard interface
 Section: A | Semester: 4
 Instructor: Mr. Yasir Iqbal

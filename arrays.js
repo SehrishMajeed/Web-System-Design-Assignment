@@ -1,9 +1,7 @@
 // ======================================================
-// CS305 - Web Systems and Technology
-// Part 4: Arrays
+// // Part 4: Arrays
 // File: arrays.js
-// Student: Sehrish Majeed (24014119-141)
-// Section: A | Semester: 4
+// // Section: A | Semester: 4
 // Instructor: Mr. Yasir Iqbal
 // Description:
 //   This file covers JavaScript arrays: creation, access,

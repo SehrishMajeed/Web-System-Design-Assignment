@@ -1,9 +1,7 @@
 // ======================================================
-// CS305 - Web Systems and Technology
-// Part 2: Functions
+// // Part 2: Functions
 // File: functions.js
-// Student: Sehrish Majeed (24014119-141)
-// Section: A | Semester: 4
+// // Section: A | Semester: 4
 // Instructor: Mr. Yasir Iqbal
 // Description:
 //   This file covers JavaScript functions: declarations,
@@ -191,7 +189,7 @@ function displayResult(data) {
     console.log("Callback received data for:", data.name);
 }
 
-processUserData("Sehrish", displayResult);
+processUserData("John", displayResult);
 
 // Passing an arrow function as a callback directly
 processUserData("Ahmed", (data) => {

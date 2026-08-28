@@ -1,9 +1,7 @@
 // ======================================================
-// CS305 - Web Systems and Technology
-// Part 2: Loops and Iteration
+// // Part 2: Loops and Iteration
 // File: loops.js
-// Student: Sehrish Majeed (24014119-141)
-// Section: A | Semester: 4
+// // Section: A | Semester: 4
 // Instructor: Mr. Yasir Iqbal
 // Description:
 //   This file demonstrates JavaScript looping concepts:
@@ -284,7 +282,7 @@ for (let fruit of fruits2) {
 
 // for...in on an object (shows property keys)
 console.log("\nfor...in on an object:");
-let student = { name: "Sehrish", age: 20, section: "A" };
+let student = { name: "John", age: 20, section: "A" };
 
 for (let key in student) {
     console.log(key + ": " + student[key]);
